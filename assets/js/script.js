@@ -50,10 +50,12 @@ const quizContent = [
     }
 ];
 
+//new variables to manage questions and answers
 var i = 0;
 var currentQuestion = quizContent[i];
 var currentAnswers = currentQuestion.ans;
 
+//an event listener and function that manually updates the current question and answers as well as removing hide status from game elements
 startGame.addEventListener("click", start);
 
 function start(){
@@ -69,12 +71,14 @@ function start(){
         ans3.innerText = currentQuestion.ans.c;
         ans4.innerText = currentQuestion.ans.d;
     }else{
+        //ensures blank gamestate for a new game
         startGame.innerText = "Start Quiz";
         resetGameState();
         clearInterval(timeInterval);
     }
 }
 
+//variables and a timer function that counts down from 30 every second as well as hiding game elements and setting up a new gamestate when timer is out
 var timeInterval;
 var timeLeft;
 function timerStart(){
@@ -93,6 +97,7 @@ function timerStart(){
   }, 1000);
 }
 
+//manually cycles the questions and answers when called to whichever question is next in the array
 function cycleQuestion(){
     i++;
     if(i < 4){
@@ -130,6 +135,7 @@ function ansBtnsUse(event){
     }
 }
 
+//sets the questions and answers array back to the start and hides game elements when called
 function resetGameState(){
     i = 0;
     questions.classList.add("hide");
@@ -137,6 +143,7 @@ function resetGameState(){
     ansResult.classList.add("hide");
 }
 
+//clears game elements and updates ui to victory state on game completion
 function endGame(){
     clearTimeout(timeInterval);
     answers.classList.add("hide");
@@ -145,12 +152,14 @@ function endGame(){
     finalResult();
 }
 
+//creates a prompt at end of game to record score and player information to localstorage
 function finalResult(){
     let score = prompt("Congratulations! Your score is " + timeLeft + "please enter your initials")
     localStorage.setItem("Player", score);
     localStorage.setItem("Score", timeLeft)
 }
 
+//and event listener and funtion to pull up stored score and player information from local storage
 highscores.addEventListener("click", displayScores);
 
 function displayScores(event){

@@ -1,17 +1,19 @@
+/* basic color variables */
 :root {
     --background: rgb(177, 176, 176);
     --buttons: rgb(0, 78, 0);
 }
 
+/* sets page background color and global font */
 body {
     background-color: var(--background);
     font-family: sans-serif;
 }
 
+/* gives header elements flex wrap */
 header {
     display: flex;
     flex-wrap: wrap;
-    
 }
 
 .highscores {
@@ -22,6 +24,7 @@ header {
     display: none;
 }
 
+/* styles the button to be green with orange text and no border, as well as includes empty shadow  and transition elements for hover effect I've been wanting to try */
 button {
     background-color: var(--buttons);
     color: orange;
@@ -37,17 +40,20 @@ button {
     transition: ease-out 0.4s;
 }
 
+/* on hover inverts text color while the ease out of the static button styling applies the shame inset box shadow at maximum width that ultimately creates a color wipe effect */
 button:hover {
     box-shadow: inset 200px 0 0 0 orange;
     color: var(--buttons);
 }
 
+/* creates a gamespace header with an underline in the center of screen */
 .game {
     border-bottom: 5px solid black;
     width: 100%;
     text-align: center;
 }
 
+/* applies flex wrap, margins and centering to game elements */
 main {
     display: flex;
     flex-wrap: wrap;
@@ -55,6 +61,7 @@ main {
     margin: 50px;
 }
 
+/* creates a seperate and very visible questions area, at 95% of the screen so the answers will always appear underneath */
 .questions {
     width: 95%;
     height: 30%;
@@ -62,11 +69,13 @@ main {
     margin: 20px;
 }
 
+/* sets a square for the answers to appear in */
 .answers {
     width: 500px;
     height: 500px;
 }
 
+/* moves answer buttons to the center and applies a margin so they create a grid pattern */
 .answer-btn {
     justify-content: center;
     margin: 20px;
